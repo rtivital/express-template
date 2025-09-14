@@ -60,6 +60,7 @@
     "express": "^5.1.0",
     "express-session": "^1.18.2",
     "helmet": "^8.1.0",
+    "http-status": "^2.1.0",
     "pino": "^9.9.5",
     "prisma": "^6.16.1",
     "redis": "^5.8.2",
