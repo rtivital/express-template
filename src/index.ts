@@ -11,11 +11,11 @@ const start = async () => {
     app.listen(env.PORT, () => {
       logger.info(`Server listening: http://localhost:${env.PORT}`);
     });
-  } catch (err) {
+  } catch (error) {
     redisClient.destroy();
     await prisma.$disconnect();
-    logger.error(err);
-    process.exit(1);
+    logger.fatal(error, 'Server failed to start');
+    throw error;
   }
 };
 

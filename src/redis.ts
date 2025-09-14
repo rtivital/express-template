@@ -12,7 +12,7 @@ export async function connectRedis() {
     await redisClient.ping();
     logger.info(`Redis connected: ${env.REDIS_URL}`);
   } catch (error) {
-    logger.error(error, 'Redis connection error');
-    process.exit(1);
+    logger.fatal(error, 'Redis connection error');
+    throw error;
   }
 }
