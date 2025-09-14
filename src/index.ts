@@ -1,6 +1,6 @@
-import { app } from './app.js';
-import { env } from './env.js';
-import { logger } from './logger.js';
+import { app } from './app';
+import { env } from './env';
+import { logger } from './logger';
 
 const start = async () => {
   try {
