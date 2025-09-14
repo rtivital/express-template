@@ -1,6 +1,6 @@
 import { env } from '@/env';
+import { PrismaClient } from '@/generated/prisma/client';
 import { logger } from '@/logger';
-import { PrismaClient } from './generated/prisma/client';
 
 export const prisma = new PrismaClient();
 
