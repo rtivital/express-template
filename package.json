@@ -13,8 +13,8 @@
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prisma": "npx prisma",
     "start": "NODE_ENV=production node dist/index.js",
-    "serve": "NODE_ENV=development node -r dotenv/config dist/index.js",
     "dev": "tsx watch src",
     "clean": "rimraf dist",
     "build": "npm run clean && rollup -c rollup.config.mjs",
@@ -50,9 +50,11 @@
     "typescript-eslint": "^8.43.0"
   },
   "dependencies": {
+    "@prisma/client": "6.16.1",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "pino": "^9.9.5",
+    "prisma": "^6.16.1",
     "zod": "^4.1.8"
   }
 }
