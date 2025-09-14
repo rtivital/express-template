@@ -10,7 +10,7 @@ export default defineConfig(
   pluginSecurity.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
   ...tseslint.configs.recommended,
-  { ignores: ['**/*.js', '**/*.cjs', '**/*.mjs'] },
+  { ignores: ['**/*.js', '**/*.cjs', '**/*.mjs', './src/generated'] },
   {
     rules: {
       'unicorn/prevent-abbreviations': 'off',

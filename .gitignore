@@ -92,5 +92,5 @@ node_modules/
 .DS_Store
 
 # Project files
-/generated/prisma
+/src/generated/prisma
 /dist
