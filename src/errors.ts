@@ -1,5 +1,5 @@
 export interface FormattedHttpError {
-  error: string;
+  message: string;
   context?: Record<string, any>;
 }
 
@@ -15,7 +15,7 @@ export class HttpError extends Error {
 
   format() {
     const result: FormattedHttpError = {
-      error: this.message,
+      message: this.message,
     };
 
     if (this.context) {
