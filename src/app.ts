@@ -4,7 +4,9 @@ import helmet from 'helmet';
 import { env } from '@/env';
 import { sessionMiddleware } from '@/middlewares/session';
 import { prisma } from '@/prisma';
+import { errorHandler } from './middlewares/error-handler';
 import { trailingSlashRedirect } from './middlewares/trailing-slash-redirect';
+import { UsersController } from './modules/users/users-controller';
 
 export const app = express();
 
@@ -18,7 +20,11 @@ if (env.CORS) {
 
 app.use(sessionMiddleware);
 
-app.get('/health', async (req, res) => {
+app.get('/health', async (_req, res) => {
   const users = await prisma.user.findMany();
   res.json({ message: 'ok', users });
 });
+
+app.use(UsersController);
+
+app.use(errorHandler);
