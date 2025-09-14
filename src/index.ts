@@ -1,13 +1,14 @@
+import { app } from './app.js';
 import { env } from './env.js';
 import { logger } from './logger.js';
-import { server } from './server.js';
 
 const start = async () => {
   try {
-    logger.info(`Server listening at http://${env.HOST}:${env.PORT}`);
-    await server.listen({ port: env.PORT, host: env.HOST });
+    app.listen(env.PORT, () => {
+      logger.info(`Server listening at http://localhost:${env.PORT}`);
+    });
   } catch (err) {
-    server.log.error(err);
+    logger.error(err);
     process.exit(1);
   }
 };
