@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import status from 'http-status';
-import z, { ZodError } from 'zod/v4';
+import z, { ZodError } from 'zod';
 
 export function validateBody(schema: z.ZodType<unknown>) {
   return (req: Request, res: Response, next: NextFunction) => {
