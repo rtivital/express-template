@@ -7,4 +7,4 @@ const config = {
   importOrder: ['<BUILTIN_MODULES>', '<THIRD_PARTY_MODULES>', '^@/.*$', '^[.]'],
 };
 
-module.exports = config;
+export default config;

@@ -17,7 +17,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "dev": "tsx watch src",
     "clean": "rimraf dist",
-    "build": "npm run clean && rollup -c rollup.config.mjs",
+    "build": "npm run clean && rollup -c rollup.config.js",
     "lint": "eslint src --cache",
     "typecheck": "tsc --noEmit",
     "jest": "jest",
