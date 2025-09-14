@@ -1,6 +1,6 @@
-# Fastify template
+# Express template
 
-A basic fastify server template with TypeScript, ESM, ESLint and Prettier. Node.js 18+ is required.
+A basic express server template with TypeScript, ESM, ESLint and Prettier. Node.js 24+ is required.
 
 ## Getting started
 

@@ -1,5 +1,5 @@
 {
-  "name": "fastify-template",
+  "name": "express-template",
   "version": "1.0.0",
   "packageManager": "yarn@4.9.4",
   "engines": {
@@ -9,7 +9,7 @@
   "main": "index.js",
   "type": "module",
   "exports": "./dist/index.js",
-  "repository": "git@github.com:rtivital/fastify-template.git",
+  "repository": "git@github.com:rtivital/express-template.git",
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "license": "MIT",
   "scripts": {
