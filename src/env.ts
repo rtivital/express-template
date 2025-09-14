@@ -9,6 +9,7 @@ const envSchema = z.object({
   CORS: z.string().default(''),
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug']).default('info'),
   DATABASE_URL: z.string(),
+  REDIS_URL: z.string(),
 });
 
 export const env = envSchema.parse(process.env);
