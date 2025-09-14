@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "public"."users" (
-    "id" TEXT NOT NULL,
+    "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "name" TEXT NOT NULL,
 

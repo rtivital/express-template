@@ -14,7 +14,7 @@ datasource db {
 
 // --- template start
 model User {
-  id    String @id @default(cuid())
+  id    Int    @id @default(autoincrement())
   email String @unique
   name  String
 
