@@ -10,6 +10,7 @@ const envSchema = z.object({
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug']).default('info'),
   DATABASE_URL: z.string(),
   REDIS_URL: z.string(),
+  SESSION_SECRET: z.string(),
 });
 
 export const env = envSchema.parse(process.env);
