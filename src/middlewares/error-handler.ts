@@ -1,18 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
+import status from 'http-status';
 import { ZodError } from 'zod';
 import { HttpError } from '@/errors';
 import { logger } from '@/logger';
+import { formatZodError } from '@/utils/format-zod-error';
 
 export function errorHandler(error: Error, req: Request, res: Response, _next: NextFunction) {
   if (error instanceof ZodError) {
     logger.info(error, `Validation error at ${req.originalUrl}`);
-    return res.status(422).json({
-      message: 'Validation Error',
-      details: error.issues.map((err) => ({
-        path: err.path.join('.'),
-        message: err.message,
-      })),
-    });
+    return res.status(status.UNPROCESSABLE_ENTITY).json(formatZodError(error));
   }
 
   if (error instanceof HttpError) {
@@ -22,9 +18,9 @@ export function errorHandler(error: Error, req: Request, res: Response, _next: N
 
   if (error instanceof Error) {
     logger.fatal(error, 'Unexpected error');
-    return res.status(500).json({ message: 'Internal Server Error' });
+    return res.status(status.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
   }
 
   logger.fatal({ err: error }, 'Unknown error type');
-  return res.status(500).json({ message: 'Internal Server Error' });
+  return res.status(status.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
 }

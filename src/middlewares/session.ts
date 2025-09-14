@@ -5,7 +5,7 @@ import { redisClient } from '@/redis';
 
 const redisStore = new RedisStore({
   client: redisClient,
-  prefix: 'myapp:',
+  prefix: 'session:',
 });
 
 export const sessionMiddleware = session({

@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import status from 'http-status';
 import z, { ZodError } from 'zod';
+import { formatZodError } from '@/utils/format-zod-error';
 
 export function validateBody(schema: z.ZodType<unknown>) {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -9,14 +10,9 @@ export function validateBody(schema: z.ZodType<unknown>) {
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        const errorMessages = error.issues.map((issue) => ({
-          message: `${issue.path.join('.')} is ${issue.message}`,
-        }));
-        res
-          .status(status.UNPROCESSABLE_ENTITY)
-          .json({ error: 'Invalid data', details: errorMessages });
+        res.status(status.UNPROCESSABLE_ENTITY).json(formatZodError(error));
       } else {
-        res.status(status.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
+        res.status(status.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
       }
     }
   };
