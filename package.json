@@ -44,16 +44,16 @@
     "pino-pretty": "^13.1.1",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "rollup": "^4.50.1",
+    "rollup": "^4.50.2",
     "rollup-plugin-esbuild": "^6.2.1",
     "rollup-plugin-node-externals": "^8.1.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
-    "ts-jest": "^29.4.1",
+    "ts-jest": "^29.4.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.43.0"
+    "typescript-eslint": "^8.44.0"
   },
   "dependencies": {
     "@prisma/client": "6.16.1",
