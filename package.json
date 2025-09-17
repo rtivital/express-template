@@ -13,8 +13,8 @@
   "author": "Vitaly Rtishchev <rtivital@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prisma": "npx prisma",
-    "prisma:reset": "npx prisma migrate reset --force && npx prisma db seed",
+    "prisma": "dotenv -e .env npx prisma",
+    "prisma:reset": "dotenv -e .env npx prisma migrate reset --force",
     "prisma:migrate:test": "dotenv -e .env.test -- prisma migrate dev",
     "start": "NODE_ENV=production node dist/index.js",
     "dev": "tsx watch src",
