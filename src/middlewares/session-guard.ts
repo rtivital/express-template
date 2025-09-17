@@ -11,7 +11,14 @@ export async function sessionGuard(req: Request, res: Response, next: NextFuncti
   }
 
   try {
-    req.user = await getUserById({ id: req.session.userId });
+    const user = await getUserById({ id: req.session.userId });
+    if (!user) {
+      logger.info('Session guard rejected the request: user not found');
+      res.status(status.UNAUTHORIZED).send({ message: 'Unauthorized' });
+      return;
+    }
+
+    req.user = user;
     next();
   } catch (error) {
     logger.info(error, 'Session guard rejected the request');
