@@ -1,7 +1,7 @@
 {
   "name": "express-template",
   "version": "1.0.0",
-  "packageManager": "yarn@4.9.4",
+  "packageManager": "yarn@4.10.2",
   "engines": {
     "node": ">=20.9.0",
     "yarn": ">=3.0.0"
@@ -34,7 +34,7 @@
     "@types/express": "^5",
     "@types/express-session": "^1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.5.1",
+    "@types/node": "^24.5.2",
     "@types/supertest": "^6.0.3",
     "dotenv-cli": "^10.0.0",
     "esbuild": "^0.25.10",
@@ -50,7 +50,7 @@
     "rollup-plugin-node-externals": "^8.1.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
     "supertest": "^7.1.4",
-    "ts-jest": "^29.4.2",
+    "ts-jest": "^29.4.3",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.20.5",
