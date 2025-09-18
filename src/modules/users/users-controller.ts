@@ -13,13 +13,18 @@ UsersController.get('/api/v1/users', sessionGuard, async (_req, res) => {
   res.json(users);
 });
 
+UsersController.get('/api/v1/users/:id', sessionGuard, async (req, res) => {
+  const user = await prisma.user.findUnique({ where: { id: Number(req.params.id) } });
+  res.json(user);
+});
+
 UsersController.get('/api/v1/users/me', sessionGuard, async (req, res) => {
   const user = await prisma.user.findUnique({ where: { id: req.session.userId } });
   res.json(user);
 });
 
-UsersController.get('/api/v1/users/login', async (req, res) => {
-  const user = await getUserByEmail({ email: req.query.email as string });
+UsersController.post('/api/v1/users/login', async (req, res) => {
+  const user = await getUserByEmail({ email: req.body.email as string });
 
   if (!user) {
     res.status(status.NOT_FOUND).json({ message: 'User not found' });

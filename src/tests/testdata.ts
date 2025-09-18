@@ -1,18 +1,22 @@
 import { Prisma, User } from '@/generated/prisma/client';
+import { prisma } from '@/prisma';
 
 export class Testdata {
   #createdUsers: User[];
+  #tx: Prisma.TransactionClient;
 
   static randomEmail() {
     return `${Math.random()}@testdata.com`;
   }
 
-  constructor() {
+  constructor(tx?: Prisma.TransactionClient) {
     this.#createdUsers = [];
+    this.#tx = tx || prisma;
   }
 
-  async createUser(tx: Prisma.TransactionClient) {
-    const user = await tx.user.create({
+  async createUser(tx?: Prisma.TransactionClient) {
+    const client = tx || this.#tx;
+    const user = await client.user.create({
       data: {
         email: Testdata.randomEmail(),
         name: 'Testdata user',
