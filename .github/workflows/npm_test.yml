@@ -12,7 +12,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:17
+        image: postgres:15
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
@@ -52,21 +52,24 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn install --frozen-lockfile
 
-      - name: Wait for PostgreSQL to be ready
+      - name: Install Redis CLI
+        run: sudo apt-get update && sudo apt-get install -y redis-tools
+
+      - name: Wait for services to be ready
         run: |
+          echo "Waiting for PostgreSQL..."
           until pg_isready -h localhost -p 5432 -U postgres; do
-            echo "Waiting for PostgreSQL..."
             sleep 2
           done
+          echo "PostgreSQL is ready!"
 
-      - name: Wait for Redis to be ready
-        run: |
+          echo "Waiting for Redis..."
           until redis-cli -h localhost -p 6379 ping; do
-            echo "Waiting for Redis..."
             sleep 2
           done
+          echo "Redis is ready!"
 
       - name: Run database migrations
         run: yarn prisma migrate deploy
