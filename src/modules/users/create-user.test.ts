@@ -1,5 +1,5 @@
 import { prisma } from '@/prisma';
-import { Testdata } from '@/tests';
+import { expectValidationError, Testdata } from '@/tests';
 import { createUser } from './create-user';
 
 describe('create-user', () => {
@@ -28,5 +28,15 @@ describe('create-user', () => {
         createUser({ email: existingUser.email, name: 'Another User' }, tx)
       ).rejects.toThrow('User with this email already exists');
     });
+  });
+
+  it('throws a validation error for invalid payload', async () => {
+    try {
+      await createUser({ email: 'invalid-email', name: 'A' } as any, prisma);
+      fail('Expected createUser to throw');
+    } catch (error) {
+      expectValidationError(error, 'email', 'Invalid email address');
+      expectValidationError(error, 'name', 'Must be at least 2 characters');
+    }
   });
 });

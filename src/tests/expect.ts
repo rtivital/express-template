@@ -1,12 +1,17 @@
-export function expectValidationError(body: any, path: string, message?: string) {
-  expect(body).toHaveProperty('message', 'Validation Error');
-  expect(body).toHaveProperty('details');
+import { ZodError } from 'zod';
+import { formatZodError } from '@/utils/format-zod-error';
 
-  const details = body.details as { path: string; message: string }[];
-  const error = details.find((d) => d.path === path);
-  expect(error).toBeDefined();
+export function expectValidationError(input: any, path: string, message?: string) {
+  const formatted = input instanceof ZodError ? formatZodError(input) : input;
+
+  expect(formatted).toHaveProperty('message', 'Validation Error');
+  expect(formatted).toHaveProperty('details');
+
+  const details = formatted.details as { path: string; message: string }[];
+  const issue = details.find((d) => d.path === path);
+  expect(issue).toBeDefined();
 
   if (message) {
-    expect(error).toHaveProperty('message', message);
+    expect(issue).toHaveProperty('message', message);
   }
 }
