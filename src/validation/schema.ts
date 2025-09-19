@@ -1,5 +1,5 @@
 import z from 'zod';
 
-export const intId = z.coerce.number('Must be an integer').int('Must be an integer');
+export const IntIdSchema = z.coerce.number('Must be an integer').int('Must be an integer');
 
-export const idSchema = z.object({ id: intId });
+export const IdObjectSchema = z.object({ id: IntIdSchema });

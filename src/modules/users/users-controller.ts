@@ -4,10 +4,11 @@ import { HttpError } from '@/errors';
 import { sessionGuard } from '@/middlewares/session-guard';
 import { validate } from '@/middlewares/validate';
 import { prisma } from '@/prisma';
-import { idSchema } from '@/validation';
-import { CreateUserSchema } from './create-user';
+import { IdObjectSchema } from '@/validation';
+import { BaseUserSchema } from './create-user';
 import { getUserByEmail, GetUserByEmailSchema } from './get-user-by-email';
 import { getUserById } from './get-user-by-id';
+import { updateUser } from './update-user';
 
 export const UsersController = express.Router();
 
@@ -18,7 +19,7 @@ UsersController.get('/api/v1/users', sessionGuard, async (_req, res) => {
 
 UsersController.get(
   '/api/v1/users/:id',
-  validate(idSchema, 'params'),
+  validate(IdObjectSchema, 'params'),
   sessionGuard,
   async (req, res) => {
     const user = await getUserById({ id: req.params.id });
@@ -58,14 +59,36 @@ UsersController.post('/api/v1/users/login', validate(GetUserByEmailSchema), asyn
   res.json(user);
 });
 
-UsersController.get('/api/v1/users/email', async (req, res) => {
-  const user = await getUserByEmail({ email: req.query.email as string });
-  res.json(user);
+UsersController.post('/api/v1/users/logout', sessionGuard, async (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      res.status(status.INTERNAL_SERVER_ERROR).json({ message: 'Could not log out' });
+      return;
+    }
+
+    res.json({ message: 'Logged out' });
+  });
 });
 
-UsersController.post('/api/v1/users', validate(CreateUserSchema), async (req, res) => {
+UsersController.post('/api/v1/users', validate(BaseUserSchema), async (req, res) => {
   const user = await prisma.user.create({ data: req.body });
   req.session.userId = user.id;
   req.user = user;
   res.status(status.CREATED).json(user);
 });
+
+UsersController.put(
+  '/api/v1/users/:id',
+  validate(BaseUserSchema, 'body'),
+  validate(IdObjectSchema, 'params'),
+  sessionGuard,
+  async (req, res) => {
+    const user = await updateUser({ id: req.params.id, ...req.body });
+
+    if (!user) {
+      throw new HttpError(status.NOT_FOUND, 'User not found');
+    }
+
+    res.json(user);
+  }
+);
