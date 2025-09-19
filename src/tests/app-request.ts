@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-object-injection */
 import request, { Response } from 'supertest';
 import { app } from '@/app';
 

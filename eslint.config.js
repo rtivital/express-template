@@ -15,6 +15,7 @@ export default defineConfig(
     rules: {
       'unicorn/prevent-abbreviations': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      'security/detect-object-injection': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {

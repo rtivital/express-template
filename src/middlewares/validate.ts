@@ -3,10 +3,13 @@ import status from 'http-status';
 import z, { ZodError } from 'zod';
 import { formatZodError } from '@/utils/format-zod-error';
 
-export function validateBody(schema: z.ZodType<unknown>) {
+export function validate(
+  schema: z.ZodType<unknown>,
+  property: 'body' | 'query' | 'params' = 'body'
+) {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
-      schema.parse(req.body);
+      schema.parse(req[property]);
       next();
     } catch (error) {
       if (error instanceof ZodError) {

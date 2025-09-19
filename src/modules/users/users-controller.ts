@@ -1,8 +1,9 @@
 import express from 'express';
 import status from 'http-status';
 import { sessionGuard } from '@/middlewares/session-guard';
-import { validateBody } from '@/middlewares/validate-body';
+import { validate } from '@/middlewares/validate';
 import { prisma } from '@/prisma';
+import { idSchema } from '@/validation';
 import { CreateUserSchema } from './create-user';
 import { getUserByEmail } from './get-user-by-email';
 
@@ -13,10 +14,15 @@ UsersController.get('/api/v1/users', sessionGuard, async (_req, res) => {
   res.json(users);
 });
 
-UsersController.get('/api/v1/users/:id', sessionGuard, async (req, res) => {
-  const user = await prisma.user.findUnique({ where: { id: Number(req.params.id) } });
-  res.json(user);
-});
+UsersController.get(
+  '/api/v1/users/:id',
+  validate(idSchema, 'params'),
+  sessionGuard,
+  async (req, res) => {
+    const user = await prisma.user.findUnique({ where: { id: Number(req.params.id) } });
+    res.json(user);
+  }
+);
 
 UsersController.get('/api/v1/users/me', sessionGuard, async (req, res) => {
   const user = await prisma.user.findUnique({ where: { id: req.session.userId } });
@@ -41,7 +47,7 @@ UsersController.get('/api/v1/users/email', async (req, res) => {
   res.json(user);
 });
 
-UsersController.post('/api/v1/users', validateBody(CreateUserSchema), async (req, res) => {
+UsersController.post('/api/v1/users', validate(CreateUserSchema), async (req, res) => {
   const user = await prisma.user.create({ data: req.body });
   req.session.userId = user.id;
   req.user = user;
