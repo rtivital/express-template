@@ -3,8 +3,8 @@ import { HttpError } from '@/errors';
 import { User } from '@/generated/prisma/client';
 import { createService } from '@/utils/create-service';
 import { IntIdSchema } from '@/validation';
-import { BaseUserSchema } from './create-user';
 import { getUserById } from './get-user-by-id';
+import { BaseUserSchema } from './users-schema';
 
 export const UpdateUserSchema = BaseUserSchema.extend({
   id: IntIdSchema,

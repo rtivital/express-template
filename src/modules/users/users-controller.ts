@@ -5,10 +5,10 @@ import { sessionGuard } from '@/middlewares/session-guard';
 import { validate } from '@/middlewares/validate';
 import { prisma } from '@/prisma';
 import { IdObjectSchema } from '@/validation';
-import { BaseUserSchema } from './create-user';
 import { getUserByEmail, GetUserByEmailSchema } from './get-user-by-email';
 import { getUserById } from './get-user-by-id';
 import { updateUser } from './update-user';
+import { BaseUserSchema } from './users-schema';
 
 export const UsersController = express.Router();
 
