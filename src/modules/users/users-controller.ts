@@ -5,6 +5,7 @@ import { sessionGuard } from '@/middlewares/session-guard';
 import { validate } from '@/middlewares/validate';
 import { prisma } from '@/prisma';
 import { IdObjectSchema } from '@/validation';
+import { deleteUser } from './delete-user';
 import { getUserByEmail, GetUserByEmailSchema } from './get-user-by-email';
 import { getUserById } from './get-user-by-id';
 import { updateUser } from './update-user';
@@ -89,6 +90,16 @@ UsersController.put(
       throw new HttpError(status.NOT_FOUND, 'User not found');
     }
 
+    res.json(user);
+  }
+);
+
+UsersController.delete(
+  '/api/v1/users/:id',
+  validate(IdObjectSchema, 'params'),
+  sessionGuard,
+  async (req, res) => {
+    const user = await deleteUser({ id: req.params.id });
     res.json(user);
   }
 );

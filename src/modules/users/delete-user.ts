@@ -13,7 +13,7 @@ export const deleteUser = createService(IdObjectSchema, async (input, prisma): P
   }
 
   const user = await prisma.user.delete({
-    where: { id: input.id },
+    where: { id: existingUser.id },
   });
 
   return user;

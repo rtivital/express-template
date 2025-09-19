@@ -124,4 +124,49 @@ describe('users-controller', () => {
       expect(response.body).toHaveProperty('message', 'User not found');
     });
   });
+
+  describe('DELETE /api/v1/users/:id', () => {
+    it('deletes existing user', async () => {
+      const user = await testdata.createUser();
+
+      const response = await appRequestWithAuth({
+        email: user.email,
+        url: `/api/v1/users/${user.id}`,
+        method: 'delete',
+      });
+
+      expect(response.status).toBe(200);
+      expect(response.body).toStrictEqual(user);
+
+      const found = await prisma.user.findUnique({ where: { id: user.id } });
+      expect(found).toBeNull();
+    });
+
+    it('returns 422 for invalid id', async () => {
+      const user = await testdata.createUser();
+
+      const response = await appRequestWithAuth({
+        email: user.email,
+        url: '/api/v1/users/invalid-id',
+        method: 'delete',
+      });
+
+      expect(response.status).toBe(422);
+      expect(response.body).toHaveProperty('message', 'Validation Error');
+      expectValidationError(response.body, 'id', 'Must be an integer');
+    });
+
+    it('returns 404 for non-existing user', async () => {
+      const user = await testdata.createUser();
+
+      const response = await appRequestWithAuth({
+        email: user.email,
+        url: '/api/v1/users/-1',
+        method: 'delete',
+      });
+
+      expect(response.status).toBe(404);
+      expect(response.body).toHaveProperty('message', 'User not found');
+    });
+  });
 });
