@@ -34,5 +34,18 @@ describe('users-controller', () => {
       expect(response.body).toHaveProperty('message', 'Validation Error');
       expectValidationError(response.body, 'id', 'Must be an integer');
     });
+
+    it('returns 404 for non-existing user', async () => {
+      const user = await testdata.createUser();
+
+      const response = await appRequestWithAuth({
+        email: user.email,
+        url: '/api/v1/users/9999',
+        method: 'get',
+      });
+
+      expect(response.status).toBe(404);
+      expect(response.body).toHaveProperty('message', 'User not found');
+    });
   });
 });

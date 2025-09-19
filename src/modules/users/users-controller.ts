@@ -1,11 +1,13 @@
 import express from 'express';
 import status from 'http-status';
+import { HttpError } from '@/errors';
 import { sessionGuard } from '@/middlewares/session-guard';
 import { validate } from '@/middlewares/validate';
 import { prisma } from '@/prisma';
 import { idSchema } from '@/validation';
 import { CreateUserSchema } from './create-user';
-import { getUserByEmail } from './get-user-by-email';
+import { getUserByEmail, GetUserByEmailSchema } from './get-user-by-email';
+import { getUserById } from './get-user-by-id';
 
 export const UsersController = express.Router();
 
@@ -19,18 +21,32 @@ UsersController.get(
   validate(idSchema, 'params'),
   sessionGuard,
   async (req, res) => {
-    const user = await prisma.user.findUnique({ where: { id: Number(req.params.id) } });
+    const user = await getUserById({ id: req.params.id });
+
+    if (!user) {
+      throw new HttpError(status.NOT_FOUND, 'User not found');
+    }
+
     res.json(user);
   }
 );
 
 UsersController.get('/api/v1/users/me', sessionGuard, async (req, res) => {
-  const user = await prisma.user.findUnique({ where: { id: req.session.userId } });
+  if (!req.session.userId) {
+    throw new HttpError(status.UNAUTHORIZED, 'Unauthorized');
+  }
+
+  const user = await getUserById({ id: req.session.userId });
+
+  if (!req.session.userId) {
+    throw new HttpError(status.UNAUTHORIZED, 'Unauthorized');
+  }
+
   res.json(user);
 });
 
-UsersController.post('/api/v1/users/login', async (req, res) => {
-  const user = await getUserByEmail({ email: req.body.email as string });
+UsersController.post('/api/v1/users/login', validate(GetUserByEmailSchema), async (req, res) => {
+  const user = await getUserByEmail({ email: req.body.email });
 
   if (!user) {
     res.status(status.NOT_FOUND).json({ message: 'User not found' });
