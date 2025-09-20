@@ -21,7 +21,7 @@ export async function sessionGuard(req: Request<any>, res: Response, next: NextF
     req.user = user;
     next();
   } catch (error) {
-    logger.info(error, 'Session guard rejected the request');
+    logger.info(error, 'Session guard failed');
     res.status(status.UNAUTHORIZED).send({ message: 'Unauthorized' });
     return;
   }
