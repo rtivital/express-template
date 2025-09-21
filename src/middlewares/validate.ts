@@ -14,7 +14,20 @@ export function validate<T extends ZodType<any, any, any>, K extends 'body' | 'q
 > {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
-      req[property] = schema.parse(req[property]);
+      const parsed = schema.parse(req[property]);
+
+      if (property === 'query') {
+        // Express 5 treats req.query as a read-only getter; mutate the object instead of reassigning
+        const q = req.query as Record<string, unknown>;
+        for (const key of Object.keys(q)) delete q[key];
+        Object.assign(q, parsed);
+      } else if (property === 'params') {
+        // Params is mutable in Express; safe to reassign
+        (req as any).params = parsed;
+      } else {
+        // Body is mutable
+        (req as any).body = parsed;
+      }
       next();
     } catch (error) {
       if (error instanceof ZodError) {

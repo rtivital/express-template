@@ -3738,6 +3738,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es-toolkit@npm:^1.39.10":
+  version: 1.39.10
+  resolution: "es-toolkit@npm:1.39.10"
+  dependenciesMeta:
+    "@trivago/prettier-plugin-sort-imports@4.3.0":
+      unplugged: true
+    prettier-plugin-sort-re-exports@0.0.1:
+      unplugged: true
+  checksum: 10c0/244dd6be25bc8c7af9f085f5b9aae08169eca760fc7d4735020f8f711b6a572e0bf205400326fa85a7924e20747d315756dba1b3a5f0d2887231374ec3651a98
+  languageName: node
+  linkType: hard
+
 "esbuild@npm:^0.25.10":
   version: 0.25.10
   resolution: "esbuild@npm:0.25.10"
@@ -4234,6 +4246,7 @@ __metadata:
     cors: "npm:^2.8.5"
     dotenv: "npm:^17.2.2"
     dotenv-cli: "npm:^10.0.0"
+    es-toolkit: "npm:^1.39.10"
     esbuild: "npm:^0.25.10"
     eslint: "npm:^9.36.0"
     eslint-plugin-security: "npm:^3.0.1"

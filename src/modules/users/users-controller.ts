@@ -4,19 +4,25 @@ import { HttpError } from '@/errors';
 import { sessionGuard } from '@/middlewares/session-guard';
 import { validate } from '@/middlewares/validate';
 import { prisma } from '@/prisma';
-import { IdObjectSchema } from '@/validation';
+import { IdObjectSchema, PaginationParamsSchema } from '@/validation';
 import { deleteUser } from './delete-user';
 import { getUserByEmail, GetUserByEmailSchema } from './get-user-by-email';
 import { getUserById } from './get-user-by-id';
+import { getUsers } from './get-users';
 import { updateUser } from './update-user';
 import { BaseUserSchema } from './users-schema';
 
 export const UsersController = express.Router();
 
-UsersController.get('/api/v1/users', sessionGuard, async (_req, res) => {
-  const users = await prisma.user.findMany();
-  res.json(users);
-});
+UsersController.get(
+  '/api/v1/users',
+  validate(PaginationParamsSchema, 'query'),
+  sessionGuard,
+  async (req, res) => {
+    const users = await getUsers(req.query);
+    res.json(users);
+  }
+);
 
 UsersController.get(
   '/api/v1/users/:id',

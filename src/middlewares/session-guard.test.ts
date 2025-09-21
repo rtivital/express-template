@@ -19,14 +19,21 @@ describe('session-guard', () => {
   it('allows requests with valid session', async () => {
     const user = await testdata.createUser();
 
-    const res = await appRequestWithAuth<Array<{ id: number; email: string; name: string }>>({
+    const res = await appRequestWithAuth<{
+      data: Array<{ id: number; email: string; name: string }>;
+      total: number;
+      page: number;
+      pageSize: number;
+      totalPages: number;
+    }>({
       email: user.email,
       url: '/api/v1/users',
       method: 'get',
     });
 
     expect(res.status).toBe(200);
-    expect(Array.isArray(res.body)).toBe(true);
+    expect(res.body).toHaveProperty('data');
+    expect(Array.isArray(res.body.data)).toBe(true);
   });
 
   it('returns 401 when session user does not exist', async () => {
