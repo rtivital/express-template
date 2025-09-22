@@ -13,5 +13,5 @@ export const sessionMiddleware = session({
   resave: false,
   saveUninitialized: false,
   secret: env.SESSION_SECRET,
-  cookie: env.NODE_ENV === 'production' ? { secure: true, httpOnly: true } : {},
+  cookie: env.NODE_ENV === 'production' ? { secure: true, httpOnly: true, sameSite: 'lax' } : {},
 });
