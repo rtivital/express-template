@@ -1,4 +1,6 @@
 export default {
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts', '!src/generated/**'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },

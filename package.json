@@ -23,6 +23,7 @@
     "lint": "eslint src --cache",
     "typecheck": "tsc --noEmit",
     "jest": "npm run jest:migrate && jest --runInBand",
+    "jest:coverage": "npm run jest:migrate && jest --runInBand --coverage && open coverage/lcov-report/index.html",
     "jest:migrate": "dotenv -e .env.test -- npx prisma migrate dev",
     "jest:stress": "npm run jest:migrate && for i in {1..5}; do jest --runInBand || exit 1; done",
     "prettier:test": "prettier --check \"**/*.{ts,tsx}\"",
