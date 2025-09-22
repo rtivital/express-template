@@ -47,7 +47,7 @@
     "pino-pretty": "^13.1.1",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "rollup": "^4.51.0",
+    "rollup": "^4.52.0",
     "rollup-plugin-esbuild": "^6.2.1",
     "rollup-plugin-node-externals": "^8.1.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
@@ -69,9 +69,9 @@
     "express-session": "^1.18.2",
     "helmet": "^8.1.0",
     "http-status": "^2.1.0",
-    "pino": "^9.10.0",
+    "pino": "^9.11.0",
     "prisma": "^6.16.2",
     "redis": "^5.8.2",
-    "zod": "^4.1.9"
+    "zod": "^4.1.11"
   }
 }
