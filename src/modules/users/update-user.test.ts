@@ -17,7 +17,7 @@ describe('update-user', () => {
       const found = await tx.user.findUnique({ where: { id: user.id } });
       expect(found).toStrictEqual({ id: user.id, email: newEmail, name: newName });
 
-      await tx.user.delete({ where: { id: user.id } });
+      await testdata.teardown(tx);
     });
   });
 

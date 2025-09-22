@@ -14,6 +14,7 @@ describe('delete-user', () => {
 
       const found = await tx.user.findUnique({ where: { id: user.id } });
       expect(found).toBeNull();
+      await testdata.teardown(tx);
     });
   });
 
