@@ -9,7 +9,6 @@ export const GetUserByEmailSchema = z.object({
 export const getUserByEmail = createService(
   GetUserByEmailSchema,
   async (input, prisma): Promise<User | null> => {
-    const user = await prisma.user.findUnique({ where: { email: input.email } });
-    return user;
+    return await prisma.user.findUnique({ where: { email: input.email } });
   }
 );
