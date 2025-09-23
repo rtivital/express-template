@@ -8,6 +8,7 @@ import { httpLogger } from './logger';
 import { errorHandler } from './middlewares/error-handler';
 import { trailingSlashRedirect } from './middlewares/trailing-slash-redirect';
 import { UsersController } from './modules/users/users-controller';
+import { setupSwagger } from './swagger';
 
 export const app = express();
 
@@ -21,6 +22,9 @@ if (env.CORS) {
 }
 
 app.use(sessionMiddleware);
+
+// Setup Swagger documentation
+setupSwagger(app);
 
 app.get('/health', async (_req, res) => {
   const users = await prisma.user.findMany();
