@@ -1,4 +1,5 @@
 import { pino } from 'pino';
+import PinoHttp from 'pino-http';
 import { env } from '@/env';
 
 export const logger = pino({
@@ -8,6 +9,18 @@ export const logger = pino({
     options: {
       translateTime: 'HH:MM:ss',
       ignore: 'pid,hostname,reqId',
+    },
+  },
+});
+
+export const httpLogger = PinoHttp({
+  logger,
+  serializers: {
+    req(req) {
+      return { method: req.method, url: req.url };
+    },
+    res(res) {
+      return { statusCode: res.statusCode };
     },
   },
 });
