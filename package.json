@@ -1,7 +1,7 @@
 {
   "name": "express-template",
   "version": "1.0.0",
-  "packageManager": "yarn@4.10.2",
+  "packageManager": "yarn@4.10.3",
   "engines": {
     "node": ">=20.9.0",
     "yarn": ">=3.0.0"
