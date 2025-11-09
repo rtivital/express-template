@@ -1,7 +1,7 @@
 {
   "name": "express-template",
   "version": "1.0.0",
-  "packageManager": "yarn@4.10.3",
+  "packageManager": "yarn@4.11.0",
   "engines": {
     "node": ">=20.9.0",
     "yarn": ">=3.0.0"
@@ -61,7 +61,7 @@
     "typescript-eslint": "^8.44.0"
   },
   "dependencies": {
-    "@prisma/client": "6.18.0",
+    "@prisma/client": "6.19.0",
     "connect-redis": "^9.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
