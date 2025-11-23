@@ -1,6 +1,4 @@
-import { PrismaClient } from '@/generated/prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/prisma';
 
 const users = [
   { email: 'alice@example.com', name: 'Seeded Alice' },
