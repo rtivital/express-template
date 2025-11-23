@@ -43,7 +43,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -72,7 +72,7 @@ jobs:
           echo "Redis is ready!"
 
       - name: Run database migrations
-        run: yarn prisma migrate deploy
+        run: yarn prisma migrate deploy && yarn prisma generate
 
       - name: Run tests
         run: npm test
