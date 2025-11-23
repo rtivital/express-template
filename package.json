@@ -61,7 +61,7 @@
     "typescript-eslint": "^8.44.0"
   },
   "dependencies": {
-    "@prisma/client": "6.19.0",
+    "@prisma/client": "7.0.0",
     "connect-redis": "^9.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
@@ -72,7 +72,7 @@
     "http-status": "^2.1.0",
     "pino": "^10.0.0",
     "pino-http": "^11.0.0",
-    "prisma": "^6.16.2",
+    "prisma": "^7.0.0",
     "redis": "^5.8.2",
     "zod": "^4.1.11"
   }
