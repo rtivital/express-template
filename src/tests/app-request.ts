@@ -23,8 +23,9 @@ export async function appRequest<
   return response;
 }
 
-interface AppRequestWithAuthInput<Payload extends DefaultPayload = DefaultPayload>
-  extends AppRequestInput<Payload> {
+interface AppRequestWithAuthInput<
+  Payload extends DefaultPayload = DefaultPayload,
+> extends AppRequestInput<Payload> {
   /** Email of the user at which behalf the request should be sent */
   email: string;
 }
