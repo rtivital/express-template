@@ -33,7 +33,7 @@ export function validate<T extends ZodType<any, any, any>, K extends 'body' | 'q
       if (error instanceof ZodError) {
         res.status(status.UNPROCESSABLE_ENTITY).json(formatZodError(error));
       } else {
-        res.status(status.INTERNAL_SERVER_ERROR).json({ message: 'Internal Server Error' });
+        next(error);
       }
     }
   };

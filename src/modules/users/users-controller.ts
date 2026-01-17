@@ -46,7 +46,7 @@ UsersController.get('/api/v1/users/me', sessionGuard, async (req, res) => {
 
   const user = await getUserById({ id: req.session.userId });
 
-  if (!req.session.userId) {
+  if (!user) {
     throw new HttpError(status.UNAUTHORIZED, 'Unauthorized');
   }
 

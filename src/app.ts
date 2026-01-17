@@ -23,8 +23,8 @@ if (env.CORS) {
 app.use(sessionMiddleware);
 
 app.get('/health', async (_req, res) => {
-  const users = await prisma.user.findMany();
-  res.json({ message: 'ok', users });
+  await prisma.$queryRaw`SELECT 1`;
+  res.json({ status: 'ok' });
 });
 
 app.use(UsersController);

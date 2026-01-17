@@ -20,7 +20,7 @@ export const getUsers = createService(
       { page: input.page, pageSize: input.pageSize }
     );
 
-    await redisClient.set(cacheKey, JSON.stringify(result));
+    await redisClient.set(cacheKey, JSON.stringify(result), { EX: 300 });
 
     return result;
   }
