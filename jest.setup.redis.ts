@@ -1,3 +1,4 @@
+import { prisma } from './src/prisma';
 import { connectRedis, redisClient } from './src/redis';
 
 beforeAll(async () => {
@@ -9,6 +10,7 @@ afterAll(async () => {
     await redisClient.flushAll();
     await redisClient.quit();
   }
+  await prisma.$disconnect();
 });
 
 afterEach(async () => {
