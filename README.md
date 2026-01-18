@@ -17,22 +17,26 @@ A basic express server template with TypeScript, ESM, ESLint and Prettier. Node.
 
 ## npm scripts
 
-- `npm run dev` - start the server in development mode
-- `npm run build` - build the server for production
-- `npm start` - start the server in production mode (it is required to build the server first)
-- `npm run lint` - run ESLint
-- `npm run typecheck` – run TypeScript type checking
-- `npm run prettier:test` – check formatting with Prettier
-- `npm run prettier:write` – format files with Prettier
-- `npm test` – run typechecking, linting and formatting checks
+| Script                   | Description                                                                    |
+| :----------------------- | :----------------------------------------------------------------------------- |
+| `npm run dev`            | start the server in development mode                                           |
+| `npm run build`          | build the server for production                                                |
+| `npm start`              | start the server in production mode (it is required to build the server first) |
+| `npm run lint`           | run ESLint                                                                     |
+| `npm run typecheck`      | run TypeScript type checking                                                   |
+| `npm run prettier:test`  | check formatting with Prettier                                                 |
+| `npm run prettier:write` | format files with Prettier                                                     |
+| `npm test`               | run typechecking, linting and formatting checks                                |
 
 ## Env variables
 
-- `PORT` - port to run the server on
-- `HOST` - host to run the server on
-- `NODE_ENV` - environment the server is running in, can be `development`, `production` or `test`, default is `production`
-- `CORS` - CORS configuration, default is empty string. Example: `http://localhost:3000,http://localhost:3001`
-- `LOG_LEVEL` - log level, can be `fatal`, `error`, `warn`, `info` or `debug`, default is `error`
+| Variable    | Description                                                                                                 |
+| :---------- | :---------------------------------------------------------------------------------------------------------- |
+| `PORT`      | port to run the server on                                                                                   |
+| `HOST`      | host to run the server on                                                                                   |
+| `NODE_ENV`  | environment the server is running in, can be `development`, `production` or `test`, default is `production` |
+| `CORS`      | CORS configuration, default is empty string. Example: `http://localhost:3000,http://localhost:3001`         |
+| `LOG_LEVEL` | log level, can be `fatal`, `error`, `warn`, `info` or `debug`, default is `error`                           |
 
 ## License
 
