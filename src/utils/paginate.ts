@@ -1,3 +1,5 @@
+import { env } from '@/env';
+
 export interface PaginationParams {
   page?: number;
   pageSize?: number;
@@ -20,7 +22,7 @@ export async function paginate<Model, Args extends { where?: any; orderBy?: any 
   { page = 1, pageSize = 10 }: PaginationParams
 ): Promise<PaginatedResult<Model>> {
   const safePage = Math.max(1, page);
-  const safePageSize = Math.max(1, Math.min(pageSize, 100));
+  const safePageSize = Math.max(1, Math.min(pageSize, env.MAX_PAGE_SIZE));
 
   const total = await modelDelegate.count({ where: args.where });
   const skip = (safePage - 1) * safePageSize;

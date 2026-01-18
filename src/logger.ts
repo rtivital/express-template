@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import { pino } from 'pino';
 import PinoHttp from 'pino-http';
 import { env } from '@/env';
@@ -15,6 +16,13 @@ export const logger = pino({
 
 export const httpLogger = PinoHttp({
   logger,
+  genReqId: (req) => {
+    const existingId = req.headers['x-request-id'];
+    if (typeof existingId === 'string') {
+      return existingId;
+    }
+    return crypto.randomUUID();
+  },
   serializers: {
     req(req) {
       return { method: req.method, url: req.url };

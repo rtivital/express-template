@@ -10,7 +10,8 @@ export async function connectRedis() {
   try {
     await redisClient.connect();
     await redisClient.ping();
-    logger.info(`Redis connected: ${env.REDIS_URL}`);
+    const sanitizedUrl = env.REDIS_URL.replace(/:\/\/([^:]+):([^@]+)@/, '://***:***@');
+    logger.info(`Redis connected: ${sanitizedUrl}`);
   } catch (error) {
     logger.fatal(error, 'Redis connection error');
     throw error;

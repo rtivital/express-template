@@ -13,5 +13,12 @@ export const sessionMiddleware = session({
   resave: false,
   saveUninitialized: false,
   secret: env.SESSION_SECRET,
-  cookie: env.NODE_ENV === 'production' ? { secure: true, httpOnly: true, sameSite: 'lax' } : {},
+  name: 'sessionId',
+  rolling: true,
+  cookie: {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000,
+  },
 });

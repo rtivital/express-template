@@ -40,6 +40,7 @@
     "@types/node": "^25.0.3",
     "@types/pg": "^8",
     "@types/supertest": "^6.0.3",
+    "@types/swagger-ui-express": "^4.1.8",
     "dotenv-cli": "^11.0.0",
     "esbuild": "^0.27.2",
     "eslint": "^9.39.2",
@@ -70,6 +71,7 @@
     "dotenv": "^17.2.3",
     "es-toolkit": "^1.43.0",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
     "express-session": "^1.18.2",
     "helmet": "^8.1.0",
     "http-status": "^2.1.0",
@@ -77,6 +79,7 @@
     "pino": "^10.1.0",
     "pino-http": "^11.0.0",
     "redis": "^5.10.0",
+    "swagger-ui-express": "^5.0.1",
     "zod": "^4.2.1"
   }
 }

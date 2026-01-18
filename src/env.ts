@@ -11,6 +11,7 @@ const envSchema = z.object({
   DATABASE_URL: z.string(),
   REDIS_URL: z.string(),
   SESSION_SECRET: z.string(),
+  MAX_PAGE_SIZE: z.preprocess(Number, z.number()).default(100),
 });
 
 export const env = envSchema.parse(process.env);

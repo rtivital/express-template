@@ -9,7 +9,8 @@ export const prisma = new PrismaClient({ adapter });
 export async function connectPrisma() {
   try {
     await prisma.$queryRaw`SELECT 1`;
-    logger.info(`Database connected: ${env.DATABASE_URL}`);
+    const sanitizedUrl = env.DATABASE_URL.replace(/:\/\/([^:]+):([^@]+)@/, '://***:***@');
+    logger.info(`Database connected: ${sanitizedUrl}`);
   } catch (error) {
     logger.fatal(error, 'Prisma connection error');
     throw error;
