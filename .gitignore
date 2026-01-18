@@ -94,3 +94,4 @@ node_modules/
 # Project files
 /src/generated/prisma
 /dist
+openapi.json

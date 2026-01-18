@@ -28,6 +28,8 @@
     "jest:stress": "npm run jest:migrate && for i in {1..5}; do jest --runInBand || exit 1; done",
     "prettier:test": "prettier --check \"**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
+    "openapi:validate": "tsx src/scripts/validate-openapi.ts",
+    "openapi:export": "tsx src/scripts/export-openapi.ts",
     "test": "npm run prettier:test && npm run typecheck && npm run lint && npm run jest"
   },
   "devDependencies": {
@@ -64,6 +66,7 @@
     "typescript-eslint": "^8.50.1"
   },
   "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^8.4.0",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "7.2.0",
     "connect-redis": "^9.0.0",

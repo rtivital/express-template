@@ -4,7 +4,7 @@ import { z } from 'zod';
 dotenv.config({ quiet: true, path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
 
 const envSchema = z.object({
-  PORT: z.preprocess(Number, z.number()).default(3000),
+  PORT: z.preprocess(Number, z.number()).default(4512),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('production'),
   CORS: z.string().default(''),
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug']).default('info'),
