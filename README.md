@@ -8,7 +8,8 @@ A basic express server template with TypeScript, ESM, ESLint and Prettier. Node.
 2. Run `nvm use` – it will install the required Node.js version if it is not installed yet.
 3. Install dependencies: `yarn`
 4. Create `.env` file from `.env.example`: `cp .env.example .env`. Change the values if needed.
-5. Run the server: `npm run dev`
+5. Generate OpenAPI specification: `npm run openapi:export`
+6. Run the server: `npm run dev`
 
 ## Build for production
 
@@ -26,17 +27,23 @@ A basic express server template with TypeScript, ESM, ESLint and Prettier. Node.
 | `npm run typecheck`      | run TypeScript type checking                                                   |
 | `npm run prettier:test`  | check formatting with Prettier                                                 |
 | `npm run prettier:write` | format files with Prettier                                                     |
+| `npm run openapi:validate` | validate the generated OpenAPI specification                                 |
+| `npm run openapi:export` | export OpenAPI specification to openapi.json file                              |
 | `npm test`               | run typechecking, linting and formatting checks                                |
 
 ## Env variables
 
-| Variable    | Description                                                                                                 |
-| :---------- | :---------------------------------------------------------------------------------------------------------- |
-| `PORT`      | port to run the server on                                                                                   |
-| `HOST`      | host to run the server on                                                                                   |
-| `NODE_ENV`  | environment the server is running in, can be `development`, `production` or `test`, default is `production` |
-| `CORS`      | CORS configuration, default is empty string. Example: `http://localhost:3000,http://localhost:3001`         |
-| `LOG_LEVEL` | log level, can be `fatal`, `error`, `warn`, `info` or `debug`, default is `error`                           |
+| Variable         | Description                                                                                                 |
+| :--------------- | :---------------------------------------------------------------------------------------------------------- |
+| `PORT`           | port to run the server on                                                                                   |
+| `HOST`           | host to run the server on                                                                                   |
+| `NODE_ENV`       | environment the server is running in, can be `development`, `production` or `test`, default is `production` |
+| `CORS`           | CORS configuration, default is empty string. Example: `http://localhost:3000,http://localhost:3001`         |
+| `LOG_LEVEL`      | log level, can be `fatal`, `error`, `warn`, `info` or `debug`, default is `error`                          |
+| `DATABASE_URL`   | PostgreSQL connection string for Prisma                                                                     |
+| `REDIS_URL`      | Redis connection string for session storage                                                                 |
+| `SESSION_SECRET` | secret key for session encryption                                                                           |
+| `MAX_PAGE_SIZE`  | maximum number of items per page for paginated endpoints, default is `100`                                  |
 
 ## License
 
