@@ -68,7 +68,7 @@
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.4.0",
     "@prisma/adapter-pg": "^7.2.0",
-    "@prisma/client": "7.4.1",
+    "@prisma/client": "7.4.2",
     "connect-redis": "^9.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
