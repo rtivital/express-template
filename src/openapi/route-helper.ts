@@ -70,20 +70,18 @@ export function registerRoute(options: RegisterRouteOptions) {
 
   // Add response schemas
   for (const [statusCode, responseConfig] of Object.entries(responses)) {
-    if (responseConfig.schema) {
-      routeConfig.responses![statusCode] = {
-        description: responseConfig.description,
-        content: {
-          'application/json': {
-            schema: responseConfig.schema,
+    routeConfig.responses![statusCode] = responseConfig.schema
+      ? {
+          description: responseConfig.description,
+          content: {
+            'application/json': {
+              schema: responseConfig.schema,
+            },
           },
-        },
-      };
-    } else {
-      routeConfig.responses![statusCode] = {
-        description: responseConfig.description,
-      };
-    }
+        }
+      : {
+          description: responseConfig.description,
+        };
   }
 
   registry.registerPath(routeConfig);
