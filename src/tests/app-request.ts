@@ -2,7 +2,11 @@ import request, { Response } from 'supertest';
 import { app } from '@/app';
 
 type DefaultPayload = Record<PropertyKey, any>;
-type ResponseWithBody<ResponseBody> = Promise<Omit<Response, 'body'> & { body: ResponseBody }>;
+type ResponseWithBody<ResponseBody> = Promise<
+  Omit<Response, 'body'> & {
+    body: ResponseBody;
+  }
+>;
 
 interface AppRequestInput<Payload extends DefaultPayload = DefaultPayload> {
   /** URL to which the request should be sent */

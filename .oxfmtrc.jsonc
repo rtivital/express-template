@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "sortImports": {
+    "groups": [
+      "side_effect_style",
+      "external",
+      "internal",
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown"
+    ],
+    "newlinesBetween": false,
+    "order": "asc"
+  },
+  "sortPackageJson": false,
+  "ignorePatterns": ["*.d.ts", "*.mdx", "*.md"]
+}

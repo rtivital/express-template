@@ -1,9 +1,9 @@
-import { Server } from 'node:http';
 import { app } from '@/app';
 import { env } from '@/env';
 import { logger } from '@/logger';
 import { connectPrisma, prisma } from '@/prisma';
 import { connectRedis, redisClient } from '@/redis';
+import { Server } from 'node:http';
 
 let server: Server;
 

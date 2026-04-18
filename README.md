@@ -1,6 +1,6 @@
 # Express template
 
-A basic express server template with TypeScript, ESM, ESLint and Prettier. Node.js 24+ is required.
+A basic express server template with TypeScript, ESM, Oxlint, and Oxfmt. Node.js 24+ is required.
 
 ## Getting started
 
@@ -23,10 +23,10 @@ A basic express server template with TypeScript, ESM, ESLint and Prettier. Node.
 | `npm run dev`            | start the server in development mode                                           |
 | `npm run build`          | build the server for production                                                |
 | `npm start`              | start the server in production mode (it is required to build the server first) |
-| `npm run lint`           | run ESLint                                                                     |
+| `npm run lint`           | run Oxlint                                                                     |
 | `npm run typecheck`      | run TypeScript type checking                                                   |
-| `npm run prettier:test`  | check formatting with Prettier                                                 |
-| `npm run prettier:write` | format files with Prettier                                                     |
+| `npm run format:test`    | check formatting with Oxfmt                                                    |
+| `npm run format:write`   | format files with Oxfmt                                                        |
 | `npm run openapi:validate` | validate the generated OpenAPI specification                                 |
 | `npm run openapi:export` | export OpenAPI specification to openapi.json file                              |
 | `npm test`               | run typechecking, linting and formatting checks                                |

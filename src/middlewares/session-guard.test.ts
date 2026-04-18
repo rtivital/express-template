@@ -11,7 +11,10 @@ describe('session-guard', () => {
   });
 
   it('returns 401 when no session', async () => {
-    const res = await appRequest<{ message: string }>({ url: '/api/v1/users', method: 'get' });
+    const res = await appRequest<{ message: string }>({
+      url: '/api/v1/users',
+      method: 'get',
+    });
     expect(res.status).toBe(401);
     expect(res.body).toHaveProperty('message', 'Unauthorized');
   });

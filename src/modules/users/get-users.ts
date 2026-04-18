@@ -17,7 +17,10 @@ export const getUsers = createService(
     const result = await paginate(
       prisma.user,
       { where: {} },
-      { page: input.page, pageSize: input.pageSize }
+      {
+        page: input.page,
+        pageSize: input.pageSize,
+      }
     );
 
     await redisClient.set(cacheKey, JSON.stringify(result), { EX: 300 });

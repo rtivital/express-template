@@ -1,7 +1,10 @@
 import dotenv from 'dotenv';
 import { z } from 'zod';
 
-dotenv.config({ quiet: true, path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env' });
+dotenv.config({
+  quiet: true,
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+});
 
 const envSchema = z.object({
   PORT: z.preprocess(Number, z.number()).default(4512),

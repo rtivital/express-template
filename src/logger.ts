@@ -1,7 +1,7 @@
-import crypto from 'node:crypto';
 import { pino } from 'pino';
 import PinoHttp from 'pino-http';
 import { env } from '@/env';
+import crypto from 'node:crypto';
 
 export const logger = pino({
   level: env.NODE_ENV === 'development' ? 'debug' : env.LOG_LEVEL,
