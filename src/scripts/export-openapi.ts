@@ -1,6 +1,6 @@
+import { openApiSpec } from '../openapi';
 import fs from 'node:fs';
 import path from 'node:path';
-import { openApiSpec } from '../openapi';
 
 function exportOpenApiSpec() {
   const outputPath = path.join(process.cwd(), 'openapi.json');

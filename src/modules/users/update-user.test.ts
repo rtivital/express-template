@@ -12,10 +12,18 @@ describe('update-user', () => {
       const newName = 'Updated User';
 
       const updated = await updateUser({ id: user.id, email: newEmail, name: newName }, tx);
-      expect(updated).toStrictEqual({ id: user.id, email: newEmail, name: newName });
+      expect(updated).toStrictEqual({
+        id: user.id,
+        email: newEmail,
+        name: newName,
+      });
 
       const found = await tx.user.findUnique({ where: { id: user.id } });
-      expect(found).toStrictEqual({ id: user.id, email: newEmail, name: newName });
+      expect(found).toStrictEqual({
+        id: user.id,
+        email: newEmail,
+        name: newName,
+      });
 
       await testdata.teardown(tx);
     });

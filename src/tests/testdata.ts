@@ -36,6 +36,8 @@ export class Testdata {
   }
 
   async teardown(tx: Prisma.TransactionClient = this.#tx) {
-    await tx.user.deleteMany({ where: { id: { in: this.users.map((u) => u.id) } } });
+    await tx.user.deleteMany({
+      where: { id: { in: this.users.map((u) => u.id) } },
+    });
   }
 }

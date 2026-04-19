@@ -51,14 +51,22 @@ describe('users-controller', () => {
       const email = Testdata.randomEmail();
       const name = 'New User';
 
-      const createRes = await appRequest<{ id: number; email: string; name: string }>({
+      const createRes = await appRequest<{
+        id: number;
+        email: string;
+        name: string;
+      }>({
         url: '/api/v1/users',
         method: 'post',
         payload: { email, name },
       });
 
       expect(createRes.status).toBe(201);
-      expect(createRes.body).toStrictEqual({ id: expect.any(Number), email, name });
+      expect(createRes.body).toStrictEqual({
+        id: expect.any(Number),
+        email,
+        name,
+      });
       const cookie = createRes.headers['set-cookie'];
       expect(cookie).toBeDefined();
 

@@ -1,16 +1,16 @@
-import 'express';
-import 'express-session';
-import { User } from '@/generated/prisma/client';
+import "express"
+import "express-session"
+import { User } from "@/generated/prisma/client"
 
-declare module 'express-session' {
+declare module "express-session" {
   interface SessionData {
-    userId: number;
+    userId: number
   }
 }
 
-declare module 'express-serve-static-core' {
+declare module "express-serve-static-core" {
   interface Request {
-    user: User;
-    userProjectRole: ProjectRole | 'NONE';
+    user: User
+    userProjectRole: ProjectRole | "NONE"
   }
 }

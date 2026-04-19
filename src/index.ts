@@ -1,9 +1,9 @@
-import { Server } from 'node:http';
 import { app } from '@/app';
 import { env } from '@/env';
 import { logger } from '@/logger';
 import { connectPrisma, prisma } from '@/prisma';
 import { connectRedis, redisClient } from '@/redis';
+import { Server } from 'node:http';
 
 let server: Server;
 
@@ -29,7 +29,6 @@ const shutdown = async (signal: string) => {
     server.close(async (err) => {
       if (err) {
         logger.error(err, 'Error during server shutdown');
-        // eslint-disable-next-line unicorn/no-process-exit
         process.exit(1);
       }
 
@@ -45,22 +44,18 @@ const shutdown = async (signal: string) => {
         }
 
         logger.info('Graceful shutdown completed');
-        // eslint-disable-next-line unicorn/no-process-exit
         process.exit(0);
       } catch (error) {
         logger.error(error, 'Error during cleanup');
-        // eslint-disable-next-line unicorn/no-process-exit
         process.exit(1);
       }
     });
 
     setTimeout(() => {
       logger.warn('Forcing shutdown after timeout');
-      // eslint-disable-next-line unicorn/no-process-exit
       process.exit(1);
     }, 30_000);
   } else {
-    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(0);
   }
 };
