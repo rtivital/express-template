@@ -10,8 +10,7 @@
     "ignoreDeprecations": "6.0",
     "outDir": "dist",
     "rootDir": ".",
-    "baseUrl": ".",
-    "types": ["node", "jest"],
+    "types": ["node", "vitest/globals"],
     "paths": {
       "@/*": ["./src/*"]
     }

@@ -35,7 +35,7 @@ describe('create-user', () => {
     await prisma.$transaction(async (tx) => {
       try {
         await createUser({ email: 'invalid-email', name: 'A' } as any, tx);
-        fail('Expected createUser to throw');
+        expect.fail('Expected createUser to throw');
       } catch (error) {
         expectValidationError(error, 'email', 'Invalid email address');
         expectValidationError(error, 'name', 'Must be at least 2 characters');
