@@ -27,7 +27,7 @@ describe('delete-user', () => {
   it('throws a validation error for invalid payload', async () => {
     try {
       await deleteUser({ id: 'not-an-int' as any } as any, prisma);
-      fail('Expected deleteUser to throw');
+      expect.fail('Expected deleteUser to throw');
     } catch (error) {
       expectValidationError(error, 'id', 'Must be an integer');
     }

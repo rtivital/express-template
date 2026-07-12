@@ -40,7 +40,7 @@ describe('update-user', () => {
   it('throws a validation error for invalid payload', async () => {
     try {
       await updateUser({ id: 'invalid-id' as any, email: 'bad', name: 'A' } as any, prisma);
-      fail('Expected updateUser to throw');
+      expect.fail('Expected updateUser to throw');
     } catch (error) {
       expectValidationError(error, 'id', 'Must be an integer');
       expectValidationError(error, 'email', 'Invalid email address');
