@@ -10,7 +10,6 @@
     "ignoreDeprecations": "6.0",
     "outDir": "dist",
     "rootDir": ".",
-    "baseUrl": ".",
     "types": ["node", "jest"],
     "paths": {
       "@/*": ["./src/*"]
