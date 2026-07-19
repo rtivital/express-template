@@ -57,7 +57,7 @@
     "vitest": "^4.1.10"
   },
   "dependencies": {
-    "@asteasolutions/zod-to-openapi": "^8.4.0",
+    "@asteasolutions/zod-to-openapi": "^9.0.0",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "7.8.0",
     "connect-redis": "^9.0.0",
