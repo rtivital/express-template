@@ -5,14 +5,14 @@ __metadata:
   version: 10
   cacheKey: 10c0
 
-"@asteasolutions/zod-to-openapi@npm:^8.4.0":
-  version: 8.5.0
-  resolution: "@asteasolutions/zod-to-openapi@npm:8.5.0"
+"@asteasolutions/zod-to-openapi@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@asteasolutions/zod-to-openapi@npm:9.0.0"
   dependencies:
-    openapi3-ts: "npm:^4.1.2"
+    openapi3-ts: "npm:^4.6.0"
   peerDependencies:
     zod: ^4.0.0
-  checksum: 10c0/989674e297dbf5daef56813795d5b40a18d8de49e95f67d4d81f17e5b59f678f1a202b68631fa1a2bc83f9bbcb57db90c6a33d33e71a09579e46a0707e785a4b
+  checksum: 10c0/24c0e8344fc3f01bfd72002c9c55c8fa796c0e2e310dfd632daf8314219ce79b048ab16775608c4f4e2a7f2ffc3096cfe5ad87f060b284a49d055cf5258a7592
   languageName: node
   linkType: hard
 
@@ -2527,7 +2527,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "express-template@workspace:."
   dependencies:
-    "@asteasolutions/zod-to-openapi": "npm:^8.4.0"
+    "@asteasolutions/zod-to-openapi": "npm:^9.0.0"
     "@prisma/adapter-pg": "npm:^7.2.0"
     "@prisma/client": "npm:7.8.0"
     "@types/cors": "npm:^2.8.19"
@@ -3800,12 +3800,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openapi3-ts@npm:^4.1.2":
-  version: 4.5.0
-  resolution: "openapi3-ts@npm:4.5.0"
+"openapi3-ts@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "openapi3-ts@npm:4.6.0"
   dependencies:
-    yaml: "npm:^2.8.0"
-  checksum: 10c0/97de2d24e9ceffb89e1388e137e4a6e17ee57a02dce0c938a5e98b1338ac72b31e8b2ce8dd28945ad43fae8bee2a145892cb548ba5ae60b0930f1b6b79b0747d
+    yaml: "npm:^2.9.0"
+  checksum: 10c0/c6d867c84e57145134bdbf8dcc8942f0dab550b7acad6b5c481ee340d98fbf2701a59add25d436fe36150932eb243916fd302137591ba54dae323594acb6a433
   languageName: node
   linkType: hard
 
@@ -5456,12 +5456,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.8.0":
-  version: 2.8.2
-  resolution: "yaml@npm:2.8.2"
+"yaml@npm:^2.9.0":
+  version: 2.9.0
+  resolution: "yaml@npm:2.9.0"
   bin:
     yaml: bin.mjs
-  checksum: 10c0/703e4dc1e34b324aa66876d63618dcacb9ed49f7e7fe9b70f1e703645be8d640f68ab84f12b86df8ac960bac37acf5513e115de7c970940617ce0343c8c9cd96
+  checksum: 10c0/f340718df45e97a9551b9bf9dac61c80050bc464513b710debfb5067c380c8472e3b67809cffacb4ab5ffb5e66ef9310816c88b05f371cec60abfedd8c88e0a2
   languageName: node
   linkType: hard
 
