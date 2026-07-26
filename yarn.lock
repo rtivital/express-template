@@ -2355,13 +2355,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"connect-redis@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "connect-redis@npm:9.0.0"
+"connect-redis@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "connect-redis@npm:10.0.0"
   peerDependencies:
     express-session: ">=1"
     redis: ">=5"
-  checksum: 10c0/85616db0760f7974ed14f0676488dab168c111ae2068fae645a8b1acd0acf72d3c57d2252deb50eff662c22db72a6028e1635d9ff8450f3cac853278aa64051a
+  checksum: 10c0/effe2806fb6a2f0a1b8902728203dd2214fa1510e42cad7652927524582be162a95d4353adde8c7dbe4a015cc88766cd94fa2b43548b8fdca4e1e7b01baf48c5
   languageName: node
   linkType: hard
 
@@ -3047,7 +3047,7 @@ __metadata:
     "@types/supertest": "npm:^7.0.0"
     "@types/swagger-ui-express": "npm:^4.1.8"
     "@vitest/coverage-v8": "npm:^4.1.10"
-    connect-redis: "npm:^9.0.0"
+    connect-redis: "npm:^10.0.0"
     cors: "npm:^2.8.5"
     dotenv: "npm:^17.2.3"
     dotenv-cli: "npm:^11.0.0"
