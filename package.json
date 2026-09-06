@@ -42,7 +42,7 @@
     "@types/pg": "^8",
     "@types/supertest": "^7.0.0",
     "@types/swagger-ui-express": "^4.1.8",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/coverage-v8": "^5.0.0",
     "dotenv-cli": "^11.0.0",
     "oxfmt": "^0.66.0",
     "oxlint": "^1.58.0",
