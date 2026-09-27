@@ -63,7 +63,7 @@
     "@prisma/client": "7.10.0",
     "connect-redis": "^10.0.0",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
+    "dotenv": "^18.0.0",
     "es-toolkit": "^1.43.0",
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
