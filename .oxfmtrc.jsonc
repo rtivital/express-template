@@ -16,5 +16,5 @@
     "order": "asc"
   },
   "sortPackageJson": false,
-  "ignorePatterns": ["*.d.ts", "*.mdx", "*.md"]
+  "ignorePatterns": ["*.d.ts", "*.mdx", "*.md", "src/generated/prisma/**"]
 }

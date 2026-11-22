@@ -24,12 +24,13 @@ A basic express server template with TypeScript, ESM, Oxlint, and Oxfmt. Node.js
 | `npm run build`          | build the server for production                                                |
 | `npm start`              | start the server in production mode (it is required to build the server first) |
 | `npm run lint`           | run Oxlint                                                                     |
+| `npm run knip`           | check for unused files, exports and dependencies                               |
 | `npm run typecheck`      | run TypeScript type checking                                                   |
 | `npm run format:test`    | check formatting with Oxfmt                                                    |
 | `npm run format:write`   | format files with Oxfmt                                                        |
 | `npm run openapi:validate` | validate the generated OpenAPI specification                                 |
 | `npm run openapi:export` | export OpenAPI specification to openapi.json file                              |
-| `npm test`               | run typechecking, linting and formatting checks                                |
+| `npm test`               | run formatting, type checking, Oxlint, Knip and the Vitest suite               |
 
 ## Env variables
 

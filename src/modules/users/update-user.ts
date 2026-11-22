@@ -6,7 +6,7 @@ import { IntIdSchema } from '@/validation';
 import { getUserById } from './get-user-by-id';
 import { BaseUserSchema } from './users-schema';
 
-export const UpdateUserSchema = BaseUserSchema.extend({
+const UpdateUserSchema = BaseUserSchema.extend({
   id: IntIdSchema,
 });
 

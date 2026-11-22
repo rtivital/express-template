@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/knip/schema.json",
+  "ignoreDependencies": [
+    // Imported by the gitignored generated Prisma client.
+    "@prisma/client",
+    // Loaded by Pino using its transport target name.
+    "pino-pretty"
+  ]
+}

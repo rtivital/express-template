@@ -2,7 +2,7 @@ import z from 'zod';
 import { User } from '@/generated/prisma/client';
 import { createService } from '@/utils/create-service';
 
-export const GetUserByIdSchema = z.object({
+const GetUserByIdSchema = z.object({
   id: z.int(),
 });
 

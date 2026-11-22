@@ -16,19 +16,19 @@ registry.registerComponent('securitySchemes', 'sessionAuth', {
 });
 
 // Register common error response schemas
-export const UnauthorizedSchema = z
+const UnauthorizedSchema = z
   .object({
     message: z.string().openapi({ example: 'Unauthorized' }),
   })
   .openapi('UnauthorizedError');
 
-export const NotFoundSchema = z
+const NotFoundSchema = z
   .object({
     message: z.string().openapi({ example: 'Resource not found' }),
   })
   .openapi('NotFoundError');
 
-export const ValidationErrorSchema = z
+const ValidationErrorSchema = z
   .object({
     message: z.string().openapi({ example: 'Validation Error' }),
     errors: z

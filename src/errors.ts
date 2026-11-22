@@ -1,4 +1,4 @@
-export interface FormattedHttpError {
+interface FormattedHttpError {
   message: string;
   context?: Record<string, any>;
 }
