@@ -60,7 +60,7 @@
     "@asteasolutions/zod-to-openapi": "^9.0.0",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "7.10.1",
-    "connect-redis": "^10.0.0",
+    "connect-redis": "^11.0.0",
     "cors": "^2.8.5",
     "dotenv": "^18.0.0",
     "es-toolkit": "^1.43.0",
